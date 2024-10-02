@@ -5,7 +5,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
 
-    alert(`Thank you, ${name}! Your message has been sent. (No seriously, it went somewhere.)`);
+    alert(`Thank you, ${name}!Your message has been sent. Thanks! for taking out your precious time.`);
     
     // Clear the form
     document.getElementById('contactForm').reset();
