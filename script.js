@@ -29,17 +29,16 @@ document.getElementById("loanForm").addEventListener("submit", function(event) {
 
 // Function to calculate risk factor based on monthly income
 function calculateRiskFactor(transactions) {
-    let risk = 100; // Base risk factor is 100%
+    let risk = 100; // Start with a baseline risk factor of 100%
 
-    // Risk decreases as transactions increase (the more income, the lower the risk)
-    let incomeFactor = transactions / 1000; // You can adjust this factor to fine-tune the risk curve
+    // The risk factor decreases as transactions increase.
+    // Adjust the factor here to control how quickly the risk decreases
+    // Example: If transactions are high, risk should be lower.
+    let incomeFactor = transactions / 200;  // Scaling down the impact of transactions
 
-    // Subtract the income factor from the baseline risk factor
-    risk -= incomeFactor;
-
-    // Set a minimum risk floor of 10% (it cannot go below this value)
+    risk -= incomeFactor;  // Subtract incomeFactor from baseline risk
     if (risk < 10) {
-        risk = 10;
+        risk = 10;  // Ensure risk factor doesn't go below 10%
     }
 
     return Math.round(risk); // Return the risk factor as an integer
