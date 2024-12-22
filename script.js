@@ -32,9 +32,6 @@ function calculateRiskFactor(transactions) {
     let risk = 100;
     let incomeFactor = transactions / 50;
     risk -= incomeFactor;
-    if (risk < 10) {
-        risk = 10;
-    }
     return Math.round(risk);
 }
 
