@@ -3,49 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Micro Credit Risk Factor Calculator</title>
+    <title>Athar Akram Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Instant Micro Credit Risk Factor Calculator</h1>
-        <p>Fill in your details to calculate your risk factor for getting a loan.</p>
-    </header>
+        <div1 class="container">
+            <h1> Hi! I am <font color="white">Athar</font> </h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                  <li><a href="#academics">Academics</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                  <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div1>
+        <div2 class="social-links">
+            <a href="https://github.com/xthxr" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/xthxr" target="_blank">LinkedIn</a>
+            <a href="https://leetcode.com/xthxr" target="_blank">Leetcode</a>
+        </div2>
+</header>
+    
+    <main class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p1>I am <font color="yellow">Athar Akram</font> a code wizard, proactive and goal-oriented professional with excellent time management and problemsolving skills. Known for reliability and adaptability, with swift capacity to learn and apply new
+skills. Committed to leveraging these qualities to drive team success and contribute to
+organizational growth.
+</p1>
+        </section>
+      
+      <section id="academics">
+            <h2>Academics</h2>
+            <div class="degree">
+                <h3>Bachelor of Technology</h3>
+                <h4>Kazi Nazrul University (Govt. of West Bengal)</h4>
+                <p>Currently pursuing B.Tech. in Computer Science Engineering with a specialization in Data Science.</p>
+            </div>
+        <div class="degree">
+                <h3>ISC Examination</h3>
+                <h4>Dreamland School</h4>
+                <p>Passed with a grade of 87.75% scoring 99 out of 100 in Computer Science!</p>
+            </div>
+        <div class="degree">
+                <h3>ICSE Examination</h3>
+                <h4>Dreamland School</h4>
+                <p>Passed with a grade of 93.4%!</p>
+            </div>
+        </section>
 
-    <main>
-        <div class="form-container">
-            <form id="loanForm">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required placeholder="Your full name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="Your email address">
-                  <div class="form-group">
-                    <label for="name">Phone No.:</label>
-                    <input type="number" id="phno" name="phno" required placeholder="Your contact no.">
-                </div>
-                </div>
-                <div class="form-group">
-                    <label for="transactions">Monthly Profit (₹):</label>
-                    <input type="number" id="transactions" name="transactions" required placeholder="Total monthly transactions">
-                </div>
-                <button type="submit" class="btn">Calculate Risk Factor</button>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="degree">
+                <h3>Campus Ambassador</h3>
+                <h4><a href="https://www.geeksforgeeks.org/user/xthxr/">GeeksForGeeks</a></h4>
+                <p>Dec 2024 - Present</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project">
+                <h3>KNUconnect</h3>
+                <p>A University connection app for students! <a href="https://github.com/xthxr/KNU-Students.github.io">View Project</a></p>
+            </div>
+            <div class="project">
+                <h3>Tic-Tac-Toe</h3>
+                <p>Description of Project 2. <a href="#">View Project</a></p>
+            </div>
+            <div class="project">
+                <h3>Movie Ticketing System</h3>
+                <p>Description of Project 3. <a href="#">View Project</a></p>
+            </div>
+        </section>
+      
+      </section>
+      
+      <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="achievement">
+                <h3>National Coding League 2.0</h3>
+                <h4>Scaler School of Technology</h4>
+                <p>Qualified Regional Round leaving behing 17000+ teams and securing a position in TOP 100. <a href="https://www.linkedin.com/in/xthxr/details/certifications/1721206057197/single-media-viewer/?profileId=ACoAAE8efXsBqCULpquy-b8q0gWcvBEOapnp7h0">View Certificate</a></p>
+            </div>
+        <div class="degree">
+                <h3>WBJEE</h3>
+                <h4>West Bengal Joint Entrance Exam</h4>
+                <p>General Merit Rank: 10394</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Wanna work together? Contact Me</h2>
+            <form id="contactForm">
+                <form action="mailto:mr.techfactor@gmail.com" method="POST" enctype="multipart/form-data" name="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Send</button>
             </form>
-        </div>
-
-        <div class="result-container" id="result" style="display:none;">
-            <p><strong>Name:</strong> <span id="userName"></span></p>
-            <p><strong>Email:</strong> <span id="userEmail"></span></p>
-            <p><strong>Monthly Transactions:</strong> ₹<span id="userTransactions"></span></p>
-            <p><strong>Risk Factor:</strong> <span id="riskFactor"></span></p>
-            <button class="btn" id="resetBtn">Go Back</button>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Loan Risk Factor Calculator. All Rights Reserved.</p>
+        <p>&copy; 2024 - Athar Akram Portfolio - All Rights Reserved</p>
     </footer>
 
     <script src="script.js"></script>
