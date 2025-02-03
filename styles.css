@@ -89,14 +89,13 @@ section:hover {
     font-size:20px;
     transition:0.5s;
   }
-  
-  
-}
-h2:hover{
+  h2{
     font-size:32px;
     text-align:center;
-    transition:2.5s;
+    transition: text-align 1.5s;
   }
+}
+
 
 div {
     padding: 2rem;
