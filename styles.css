@@ -92,7 +92,7 @@ section:hover {
   h2{
     font-size:32px;
     text-align:center;
-    transition: text-align 1.5s;
+    transition:0.5s;
   }
 }
 
