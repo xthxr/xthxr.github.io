@@ -1,55 +1,60 @@
-// Smooth scroll fallback
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
-        });
-    });
-});
-
-// Scroll spy for nav
-const sections = document.querySelectorAll("main section");
-const navLinks = document.querySelectorAll("nav ul li a");
-
-window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
-            current = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-    });
-});
-
-// Scroll reveal effect
-const revealElements = document.querySelectorAll(".degree, .project, .achievement");
-
-function revealOnScroll() {
-    const windowHeight = window.innerHeight;
-    revealElements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-            el.style.opacity = 1;
-            el.style.transform = "translateY(0)";
-        }
-    });
+// === SCROLL-IN ANIMATIONS ===
+function handleScrollFadeIn() {
+  const fadeEls = document.querySelectorAll('.fade-in');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
 }
+window.addEventListener('scroll', handleScrollFadeIn);
+window.addEventListener('DOMContentLoaded', handleScrollFadeIn);
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", () => {
-    // Initial state for reveal
-    revealElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "all 0.6s ease";
+// === NAVIGATION ACTIVE LINK (Optional: Requires nav links with href="#section") ===
+function setActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  let current = '';
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 120 && rect.bottom >= 120) {
+      current = section.id;
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', setActiveNav);
+window.addEventListener('DOMContentLoaded', setActiveNav);
+
+// === BACKGROUND BUBBLES ===
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.className = 'bg-bubble';
+  bubble.style.left = Math.random() * 100 + 'vw';
+  bubble.style.animationDuration = (6 + Math.random() * 4) + 's';
+  bubble.style.opacity = 0.15 + Math.random() * 0.15;
+  bubble.style.width = bubble.style.height = (10 + Math.random() * 40) + 'px';
+  document.body.appendChild(bubble);
+  setTimeout(() => bubble.remove(), 10000);
+}
+setInterval(createBubble, 800);
+
+// === OPTIONAL: SMOOTH SCROLL FOR NAV LINKS ===
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
-    revealOnScroll(); // Trigger initial load
+  });
 });
+
