@@ -1,61 +1,63 @@
-// Wait till DOM loads
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('nav ul li a');
+// script.js
 
-  // Scroll reveal function
-  const revealOnScroll = () => {
-    const triggerBottom = window.innerHeight * 0.85;
+// Fade in sections on scroll
+const sections = document.querySelectorAll('section');
 
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-
-      if (sectionTop < triggerBottom) {
-        section.classList.add('active');
-      } else {
-        section.classList.remove('active');
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
     });
-  };
+  },
+  { threshold: 0.15 }
+);
 
-  // Highlight nav link based on section in viewport
-  const highlightNav = () => {
-    let scrollPos = window.scrollY || window.pageYOffset;
-
-    sections.forEach(section => {
-      const top = section.offsetTop - 80; // offset for header height
-      const bottom = top + section.offsetHeight;
-
-      const id = section.getAttribute('id');
-      if (scrollPos >= top && scrollPos < bottom) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  };
-
-  // Smooth scroll for nav links
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetID = link.getAttribute('href').slice(1);
-      const targetSection = document.getElementById(targetID);
-
-      targetSection.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  // Run on scroll
-  window.addEventListener('scroll', () => {
-    revealOnScroll();
-    highlightNav();
-  });
-
-  // Initial call so sections are revealed if already in viewport
-  revealOnScroll();
-  highlightNav();
+sections.forEach(section => {
+  section.classList.add('hidden');
+  observer.observe(section);
 });
+
+// Simple scroll animation classes
+const style = document.createElement('style');
+style.innerHTML = `
+  .hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+document.head.appendChild(style);
+
+// Highlight nav link on scroll
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let fromTop = window.scrollY;
+
+  navLinks.forEach(link => {
+    const section = document.querySelector(link.getAttribute("href"));
+    if (
+      section.offsetTop <= fromTop + 100 &&
+      section.offsetTop + section.offsetHeight > fromTop + 100
+    ) {
+      link.classList.add("active-link");
+    } else {
+      link.classList.remove("active-link");
+    }
+  });
+});
+
+// Optional: style for active nav link
+const navActiveStyle = document.createElement('style');
+navActiveStyle.innerHTML = `
+  .active-link {
+    color: var(--highlight) !important;
+  }
+`;
+document.head.appendChild(navActiveStyle);
